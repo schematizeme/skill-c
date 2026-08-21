@@ -1,0 +1,12 @@
+slug = "c"
+name = "schematize-c"
+tag = "Linguagem · C (defensiva)"
+status = "beta"
+order = 31
+current_version = "0.1.0"
+href = "/c"
+
+[descriptions]
+pt = "O piso DEFENSIVO de C: componente novo nasce em Rust ou Zig e C entra por ADR de exceção. Para o C que existe — sanitizers no CI (com -fno-sanitize-recover), -Werror, ownership escrito, retorno sempre conferido, fuzzing de parser e stdatomic em vez de volatile."
+en = "The DEFENSIVE C floor: new system components are born in Rust or Zig; C enters by exception ADR only. For the C that exists — sanitizers in CI (with -fno-sanitize-recover), -Werror, written ownership, always-checked return values, parser fuzzing and stdatomic instead of volatile."
+es = "El piso DEFENSIVO de C: un componente nuevo nace en Rust o Zig y C entra solo por ADR de excepción. Para el C que existe — sanitizers en el CI (con -fno-sanitize-recover), -Werror, ownership escrito, retorno siempre verificado, fuzzing de parser y stdatomic en lugar de volatile."
