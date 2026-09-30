@@ -18,7 +18,7 @@ bash /tmp/skill-c/install.sh .
 
 ## O que tem dentro
 
-- **SKILL.md** — o contrato: 10 pisos inegociáveis + mapa de references.
+- **SKILL.md** — o contrato: 11 pisos inegociáveis + mapa de references.
 - **references/** — `escopo` (onde C entra e por que **não** é escolha de fit),
   `piso` (sanitizers, flags, memória, retorno, fuzzing, concorrência), `stack-versoes`
   (ferramental **verificado rodando** nesta máquina).
