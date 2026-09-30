@@ -61,7 +61,7 @@ Mapa de references:
 8. **Parser tem fuzzing no CI**, com corpus versionado e crash virando teste de regressão.
 9. **`<stdatomic.h>`, não `volatile`** — `volatile` não dá atomicidade nem ordem.
 10. **Teste que passa sem sanitizer não prova ausência de UB** — prova só que não estourou desta vez.
-11. **Orquestrador não desenvolve; subagent barato executa.** O agent principal só planeja, despacha e revisa; ação onerosa vira micro-tasks para subagents em `sonnet` (falhou → o mesmo subagent corrige → re-decompõe → só então `opus`, com motivo). **Sem frota ociosa:** idle com pendência volta ao trabalho; dependente de outro agent → mata e enfileira com gatilho; terminou → mata. Detalhe: `schematize-engineering` → `references/orquestracao.md` §9.
+11. <!-- herdado:engineering/orquestracao:curto -->**Orquestrador não desenvolve; subagent barato executa.** O agent principal só planeja, despacha e revisa; ação onerosa vira micro-tasks para subagents em `sonnet` (falhou → o mesmo subagent corrige, até 2 rodadas → re-decompõe → só então `opus`, com motivo). No overdev, cada item do checklist vai a um subagent e o principal revisa antes do `- [x]`. **Sem frota ociosa:** idle com pendência volta ao trabalho; dependente de outro agent → mata e enfileira com gatilho; terminou → mata (§9.6). Detalhe: `schematize-engineering` → `references/orquestracao.md` §9.<!-- /herdado -->
 
 ## Relação com as outras skills
 
