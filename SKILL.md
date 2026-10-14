@@ -4,8 +4,7 @@ metadata:
   version: 0.3.0
 description: >-
   Piso defensivo de C para manter código existente (*.c/*.h, CMakeLists.txt, Makefile); componente novo nasce em Rust
-  ou Zig, C só por ADR. Use ao revisar ou corrigir C: sanitizers no CI, -Werror, ownership, fuzzing de parser. Traz
-  gate executável e template de CI.
+  ou Zig, C só por ADR. Use em C: sanitizers no CI, -Werror, ownership, fuzzing. Traz gate e CI.
 ---
 <!-- cross-skill: linguagens.md -> schematize-engineering -->
 
