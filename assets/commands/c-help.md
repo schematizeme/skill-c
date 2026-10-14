@@ -6,7 +6,7 @@ description: Mapa da skill schematize-c (o piso DEFENSIVO de C — o padrão é 
 | Comando | O que faz |
 |---|---|
 | `/c-help` | esta lista |
-| `/c-load` | carrega TODO o corpo normativo (piso, plataforma) e passa a aplicá-lo |
+| `/c-load` | carrega TODO o corpo normativo (piso, escopo) e passa a aplicá-lo |
 | `/c-review` | roda `scripts/check-c.sh` e revisa o que a máquina não lê |
 | `/c-claude` | cria ou mescla o `CLAUDE.md` sempre-on na raiz do repo |
 | `/c-cc` · `/c-handoff` | context compact / handoff no archive |

@@ -3,12 +3,16 @@
 > Parte da skill **schematize-c**. **Fonte volátil:** prazo de validade, atualizado à parte do corpo
 > normativo (regra `anexo-volatil` do lint).
 >
-> **Verificado em: 2026-08-21**, rodando na máquina de referência (Debian, **gcc 14.2.0**).
+> **Verificado em: 2026-08-21**, rodando na máquina de referência (Debian, **gcc 14.2.0**); padrão e GCC 15 verificados em 2026-10-14 por documentação, não por execução.
 
 ## Padrão e compilador
 
 - **Piso: `-std=c17`** (ou o que a plataforma alvo suportar), **explícito** — nunca o default do
   compilador, que varia entre versões e distribuições.
+- **GCC 15 mudou o default para C23 (`gnu23`)**; por isso o `-std=` explícito é obrigatório — sem
+  ele o mesmo código compila em dialetos diferentes entre distros. **C23** (`nullptr`, `constexpr`,
+  `bool`/`true`/`false` como palavras-chave, `#embed`) é opção **por ADR**, quando todos os
+  compiladores-alvo suportam; o piso segue `c17`.
 - **Dois compiladores no CI** (gcc e clang) quando possível: cada um pega avisos que o outro não
   emite, e a diferença entre eles costuma ser um UB real.
 

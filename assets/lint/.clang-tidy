@@ -1,0 +1,14 @@
+# .clang-tidy de C (schematize-c). Lista de checks NO repo, travando o CI.
+Checks: >-
+  -*,
+  bugprone-*,
+  cert-*,
+  clang-analyzer-*,
+  misc-*,
+  performance-*,
+  readability-braces-around-statements,
+  -bugprone-easily-swappable-parameters,
+  -cert-dcl37-c,
+  -cert-dcl51-cpp
+WarningsAsErrors: '*'
+HeaderFilterRegex: '.*'

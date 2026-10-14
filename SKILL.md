@@ -2,7 +2,8 @@
 name: schematize-c
 metadata:
   version: 0.2.2
-description: O piso de C da casa — DEFENSIVO, porque o padrão é não escrever C. Componente novo de sistema nasce em **Rust ou Zig**; C entra por **ADR de exceção**, não por fit (kernel, driver, embarcado sem alternativa, biblioteca que a casa já mantém). Para o C que existe, o piso é **ferramenta, não disciplina** — em C o programa errado compila, e o erro não é exceção, é comportamento indefinido: **ASan/UBSan/TSan no CI** (com `-fno-sanitize-recover=all`, senão o UBSan imprime e continua e o CI segue verde), `-Wall -Wextra -Werror -Wconversion`, `_FORTIFY_SOURCE` (que em `-O0` não faz nada), ownership escrito, `free` que anula o ponteiro, retorno conferido sempre, **fuzzing para todo parser**, `<stdatomic.h>` em vez de `volatile`. Traz gate executável que também lê o build.
+description: >-
+  Piso defensivo de C da casa para manter código existente (*.c/*.h, CMakeLists.txt, Makefile). Componente novo nasce em Rust ou Zig; C só por ADR de exceção. Use ao revisar ou corrigir C: sanitizers (ASan/UBSan) no CI, -Werror, ownership, retorno conferido, fuzzing de parser. Traz gate executável e template de CI.
 ---
 <!-- cross-skill: linguagens.md -> schematize-engineering -->
 
@@ -12,6 +13,30 @@ Esta skill é **defensiva**. Ela não existe para abrir a porta do C: existe par
 **já tem** ou que é **inevitável** não vire vulnerabilidade.
 
 **Versão:** skill `schematize-c` v0.2.2. Changelog em `CHANGELOG.md`.
+
+## Precedência e herança (leia antes de divergir)
+
+Esta skill é o recorte **C** das linguagens **sancionadas fora do rol de backend** (`schematize-engineering` → `references/linguagens.md` §2.2): **manutenção defensiva**. Componente novo de sistema nasce em Rust ou Zig, por ADR; C não recebe serviço backend novo.
+
+1. **Onde esta skill divergir da base, a BASE MANDA.** Aqui mora a especialização — a lib, o gate, a
+   sintaxe da linguagem. Divergência de *piso* é defeito desta skill, não variante local.
+2. **O que não está repetido aqui é HERDADO, não dispensado.** Valem integralmente, sem cópia local:
+   - **§28 Archive** — `<projeto>/<projeto>_archive/` é **repositório git próprio, PRIVADO e
+     obrigatório**, criticidade 0 (`schematize-archive`).
+   - **§35 Definition of Done** e a lista de anti-padrões (citada por **título**, nunca por número).
+   - **§39 Índice/MAPA** — enumeração exaustiva (uma entrada por unidade chamável, `M == N`) e grafo
+     com arestas em ASCII (`A -> B`), nunca a seta unicode.
+   - **IAM** (`schematize-engineering` → `references/iam.md`): identidade ≠ email, ≥2 fatores, ReBAC
+     multi-tenant, argon2id-only para senha nova, sessão longa e logout irreversível.
+   - **Efeito externo** nunca sai de não-produção (`schematize-engineering` →
+     `references/efeitos-externos.md`).
+   - **Orquestração** (`schematize-engineering` → `references/orquestracao.md` §9): o principal não
+     desenvolve; subagents `sonnet` por padrão, `opus` só após falha.
+3. **QA, ops, IAM e índice não têm comando próprio aqui:** vêm da base `/eng-*`. Para trabalho
+   contínuo use `/eng-overdev`; para planejar `/eng-plan`; para varrer a base `/eng-scan`; para
+   revisão geral `/eng-review` (e `/eng-ops`, `/eng-iam`, `/eng-index`). Os comandos
+   `/c-*` cobrem só o piso da linguagem.
+
 
 ## A regra, antes de tudo
 
@@ -45,6 +70,8 @@ Mapa de references:
 | **Onde C entra e por que ele NÃO é escolha de fit**; quando o ADR de exceção é legítimo; C que já existe; fronteira com C++ | `references/escopo.md` |
 | Ferramental verificado (ASan/UBSan/TSan, `-Werror`, `_FORTIFY_SOURCE`, fuzzers) | `references/stack-versoes.md` |
 
+Assets prontos para copiar: `assets/ci/github-actions-ci.yml` (clang-tidy, clang-format, build gcc/clang com `-fsanitize=address,undefined`, ctest) · `assets/lint/.clang-tidy` · `assets/lint/.clang-format`.
+
 ## Pisos inegociáveis (vetam o atalho)
 
 1. **Componente novo nasce Rust/Zig.** C é ADR de exceção.
@@ -65,8 +92,8 @@ Mapa de references:
 
 ## Relação com as outras skills
 
-- **`schematize-engineering`** — a base e o rol (`references/linguagens.md`), que é quem manda na
-  escolha de linguagem.
+- **`schematize-engineering`** — a base e o rol (`schematize-engineering → references/linguagens.md` §2.2, C como manutenção
+  defensiva), que é quem manda na escolha de linguagem.
 - **`schematize-cpp`** — C++ moderno. **C não é "C++ sem classes"**: as regras de UB, inicialização
   e conversão diferem, e misturar as mentalidades no mesmo arquivo é como o `.c` compilado como
   `.cpp` passa a ter outro comportamento.
