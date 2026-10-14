@@ -3,8 +3,7 @@ name: schematize-c
 metadata:
   version: 0.3.1
 description: >-
-  Piso defensivo de C para manter código existente (*.c/*.h, CMakeLists.txt, Makefile); componente novo nasce em Rust
-  ou Zig, C só por ADR. Use em C: sanitizers no CI, -Werror, ownership, fuzzing. Traz gate e CI.
+  Piso defensivo de C para manter código existente. Use ao tocar *.c/*.h ou CMakeLists.txt: sanitizers no CI, -Werror, ownership, fuzzing. Código novo nasce em Rust ou Zig.
 ---
 <!-- cross-skill: linguagens.md -> schematize-engineering -->
 
