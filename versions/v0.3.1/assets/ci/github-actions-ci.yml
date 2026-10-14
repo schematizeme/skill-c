@@ -1,0 +1,29 @@
+# CI de C (schematize-c). Copie para .github/workflows/ci.yml e ajuste o alvo.
+# Actions pinadas por SHA completo; troque por bump deliberado (o comentario diz a versao).
+name: ci
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  c:
+    runs-on: ubuntu-24.04
+    strategy:
+      matrix:
+        cc: [gcc, clang]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Ferramentas
+        run: sudo apt-get update && sudo apt-get install -y clang clang-tidy clang-format cmake
+      - name: Format (clang-format)
+        run: git ls-files '*.c' '*.h' | xargs -r clang-format --dry-run --Werror
+      - name: Lint (clang-tidy)
+        run: git ls-files '*.c' | xargs -r clang-tidy --warnings-as-errors='*' -- -std=c17
+      - name: Build + testes sanitizados (ASan+UBSan, sem recover)
+        env:
+          CC: ${{ matrix.cc }}
+        run: |
+          cmake -S . -B build -DCMAKE_C_STANDARD=17 -DCMAKE_C_STANDARD_REQUIRED=ON \
+            -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+            -DCMAKE_C_FLAGS="-Wall -Wextra -Werror -Wconversion -D_FORTIFY_SOURCE=3 -fsanitize=address,undefined -fno-sanitize-recover=all -fno-omit-frame-pointer"
+          cmake --build build
+          ctest --test-dir build --output-on-failure
