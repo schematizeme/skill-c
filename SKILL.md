@@ -18,7 +18,7 @@ Esta skill é **defensiva**. Ela não existe para abrir a porta do C: existe par
 
 ## Precedência e herança (leia antes de divergir)
 
-Esta skill é o recorte **C** das linguagens **sancionadas fora do rol de backend** (`schematize-engineering` → `references/linguagens.md` §2.2): **manutenção defensiva**. Componente novo de sistema nasce em Rust ou Zig, por ADR; C não recebe serviço backend novo.
+<!-- herdado:engineering/precedencia:foraRol intro="Esta skill é o recorte **C** das linguagens **sancionadas fora do rol de backend** (`schematize-engineering` → `references/linguagens.md` §2.2): **manutenção defensiva**. Componente novo de sistema nasce em Rust ou Zig, por ADR; C não recebe serviço backend novo." cmd="c" -->Esta skill é o recorte **C** das linguagens **sancionadas fora do rol de backend** (`schematize-engineering` → `references/linguagens.md` §2.2): **manutenção defensiva**. Componente novo de sistema nasce em Rust ou Zig, por ADR; C não recebe serviço backend novo.
 
 1. **Onde esta skill divergir da base, a BASE MANDA.** Aqui mora a especialização — a lib, o gate, a
    sintaxe da linguagem. Divergência de *piso* é defeito desta skill, não variante local.
@@ -37,8 +37,7 @@ Esta skill é o recorte **C** das linguagens **sancionadas fora do rol de backen
 3. **QA, ops, IAM e índice não têm comando próprio aqui:** vêm da base `/eng-*`. Para trabalho
    contínuo use `/eng-overdev`; para planejar `/eng-plan`; para varrer a base `/eng-scan`; para
    revisão geral `/eng-review` (e `/eng-ops`, `/eng-iam`, `/eng-index`). Os comandos
-   `/c-*` cobrem só o piso da linguagem.
-
+   `/c-*` cobrem só o piso da linguagem.<!-- /herdado -->
 
 ## A regra, antes de tudo
 
