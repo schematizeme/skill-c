@@ -1,0 +1,4 @@
+# .clang-format (schematize-c): base LLVM; o CI roda clang-format --dry-run --Werror.
+BasedOnStyle: LLVM
+IndentWidth: 4
+ColumnLimit: 100

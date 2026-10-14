@@ -3,7 +3,7 @@ name = "schematize-c"
 tag = "Linguagem · C (defensiva)"
 status = "beta"
 order = 31
-current_version = "0.3.1"
+current_version = "0.4.0"
 href = "/c"
 
 [descriptions]

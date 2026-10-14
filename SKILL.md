@@ -1,7 +1,7 @@
 ---
 name: schematize-c
 metadata:
-  version: 0.3.1
+  version: 0.4.0
 description: >-
   Piso defensivo de C para manter código existente. Use ao tocar *.c/*.h ou CMakeLists.txt: sanitizers no CI, -Werror, ownership, fuzzing. Código novo nasce em Rust ou Zig.
 ---
@@ -12,7 +12,7 @@ description: >-
 Esta skill é **defensiva**. Ela não existe para abrir a porta do C: existe para que o C que a casa
 **já tem** ou que é **inevitável** não vire vulnerabilidade.
 
-**Versão:** skill `schematize-c` v0.3.1. Changelog em `CHANGELOG.md`.
+**Versão:** skill `schematize-c` v0.4.0. Changelog em `CHANGELOG.md`.
 
 ## Precedência e herança (leia antes de divergir)
 
